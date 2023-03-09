@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 
 
 export default function Post({post}) {
-  const PF = "http://localhost:4000/images/";
+  // const PF = "http://localhost:4000/images/";
+  const PF = "https://shailkas-blog-api.onrender.com/images/";
   return (
     <div className='post'>
       {post.photo && (
