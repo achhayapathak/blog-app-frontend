@@ -1,9 +1,10 @@
-import axios from "axios";
+// import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import "./singlePost.css";
 import { Link } from "react-router-dom";
 import { Context } from "../../context/Context";
+import { axiosInstance } from "../../config";
 
 export default function SinglePost() {
   const location = useLocation();
@@ -17,7 +18,7 @@ export default function SinglePost() {
 
   useEffect(() => {
     const getPost = async () => {
-      const res = await axios.get("/posts/" + path);
+      const res = await axiosInstance.get("/posts/" + path);
       setPost(res.data);
       setTitle(res.data.title);
       setDesc(res.data.desc);
@@ -38,7 +39,7 @@ export default function SinglePost() {
 
   const handleUpdate = async () => {
     try {
-      await axios.put(`/posts/${post._id}`, {
+      await axiosInstance.put(`/posts/${post._id}`, {
         username: user.username,
         title,
         desc,
